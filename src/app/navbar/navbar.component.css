@@ -1,0 +1,16 @@
+:root{
+    --main-color:#0aad0a;
+}
+.bg-main{
+    background-color: var(--main-color) !important;
+}
+.txt{
+    font-size: xx-large;
+    font-weight: 900;
+    color: #0aad0a;
+}
+.cart{
+    color: #0aad0a;
+    padding-right: 5px;
+    font-size: x-large;
+}

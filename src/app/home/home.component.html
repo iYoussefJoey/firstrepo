@@ -1,0 +1,46 @@
+<app-mainslider></app-mainslider>
+<app-categories></app-categories>
+<div class="row">
+  <div>
+    <input
+      [(ngModel)]="searchTerm"
+      type="text"
+      placeholder="search for products"
+      class="form-control w-75 mx-auto my-4"
+      name=""
+      id=""
+    />
+  </div>
+  <div *ngFor="let product of Products|search:searchTerm" class="col-md-2">
+    <div class="product px-2 py-4">
+      <a [routerLink]="['/productsdetails', product._id]">
+        <img loading="lazy" class="w-100" [src]="product.imageCover" alt="" />
+        <span class="text-main fw-bold font-sm">{{
+          product.category.name | uppercase
+        }}</span>
+        <h2 class="h6 fw-bolder">
+          {{ product.title.split(" ").slice(0, 2).join(" ") | uppercase }}
+        </h2>
+        <div
+          class="d-flex flex-column align-items-center justify-content-between"
+        >
+          <span class="text-muted fw-bold font-sm"
+            >{{ product.price | currency : "EUR" }}
+          </span>
+          <div>
+            <!-- <span class="text-muted fw-bold font-sm"> {{product.ratingsAverage}}</span> -->
+            <p-rating
+              [ngModel]="toNumber(product.ratingsAverage)"
+              [cancel]="false"
+            />
+          </div>
+        </div>
+        
+      </a>
+      <button (click)="addToCart(product._id)"  class="btn bg-main text-white w-100 my-2">
+        <i class="fa-solid fa-cart-shopping"></i>
+        Add To Cart
+      </button>
+    </div>
+  </div>
+</div>

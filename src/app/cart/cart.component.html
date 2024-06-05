@@ -1,0 +1,45 @@
+<div class="bg-light py-4 my-4">
+  <h3>Shop Cart</h3>
+  <h6 class="text-main">Total Price : {{ cartDetails?.totalCartPrice }} EGP</h6>
+  <div
+    *ngFor="let item of cartDetails?.products"
+    class="row align-items-center border-bottom m-2 py-3"
+  >
+    <div class="col-md-1">
+      <img class="w-100" [src]="item?.product?.imageCover" alt="" />
+    </div>
+    <div class="col-md-11 d-flex justify-content-between">
+      <div>
+        <h6>{{ item.product.title }}</h6>
+        <h6 class="text-main">Price:{{ item.price }}</h6>
+        <button (click)="removeitem(item.product._id)" class="btn m-0 p-0">
+          <i class="fa-regular text-main fa-trash-can"> </i> Delete
+        </button>
+      </div>
+      <div class="d-flex m-3">
+        <button
+          (click)="updateItemCounter(item.product._id, item.count + 1)"
+          class="btn btn-success border-main m-3">
+          ADD
+        </button>
+        <span class="d-flex align-items-center mx-2">{{ item.count }}</span>
+        <button
+          (click)="updateItemCounter(item.product._id, item.count - 1)"
+          
+          class="btn btn-danger m-3" >
+          Remove
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn bg-main text-white my-2 m-2">
+    <a routerLink="/checkout"> Online Payment
+      <img
+        width="25"
+        src="../../assets/Images/png-transparent-logo-visa-credit-card-business-visa-text-trademark-payment.png"
+        alt=""
+      /> </a>
+   
+  </button>
+</div>
