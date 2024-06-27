@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
+import {  Component, Inject, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -28,7 +28,6 @@ import { ToastrService } from 'ngx-toastr';
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
-  providers: [ProductsService, CartService, ToastrService],
 })
 export class HomeComponent implements OnInit {
   Products: any[] = [];

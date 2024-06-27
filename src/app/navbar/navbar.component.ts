@@ -2,16 +2,14 @@ import { Component, Inject } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterModule, RouterLink, CommonModule, HttpClientModule],
+  imports: [RouterModule, RouterLink, CommonModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
-  providers: [AuthService, CartService],
 })
 export class NavbarComponent {
   isLogin: boolean = false;

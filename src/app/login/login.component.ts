@@ -17,7 +17,6 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
-  providers: [AuthService],
 })
 export class LoginComponent {
   constructor(private _authservice: AuthService, private _router: Router) {
@@ -55,9 +54,7 @@ export class LoginComponent {
             localStorage.setItem('userToken', data.token);
             this._authservice.decodeUserData();
             this.isLoading = false;
-            this._router.navigate(['/home']).then(() => {
-              window.location.reload();
-            })
+            this._router.navigate(['/home'])
             this._authservice.userData.next(data.user);
           }
         },

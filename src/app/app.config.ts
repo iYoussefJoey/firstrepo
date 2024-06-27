@@ -9,6 +9,12 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { headerInterceptor } from './header.interceptor';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideClientHydration(),provideAnimations(),provideToastr()]
+  providers: [
+    provideRouter(routes),
+    provideClientHydration(),
+    provideAnimations(),
+    provideToastr(),
+    provideHttpClient()
+  ],
 };
 //  ,provideHttpClient(withInterceptors([headerInterceptor]))]

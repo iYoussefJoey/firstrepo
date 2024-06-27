@@ -9,13 +9,16 @@ export class CartService {
   
   numberOfCartItems = new BehaviorSubject(0);
   constructor(private _httpclient: HttpClient) {
-    this.getLoggeduserCart().subscribe({
-      next: (response) => {
-        this.numberOfCartItems.next(response.numOfCartItems);
-        console.log(response);
-      },
-      error: (err) => console.log(err),
-    });
+    let token =  localStorage.getItem('userToken');
+    if (token){
+      this.getLoggeduserCart().subscribe({
+        next: (response) => {
+          this.numberOfCartItems.next(response.numOfCartItems);
+          console.log(response);
+        },
+        error: (err) => console.log(err),
+      });
+    }
   }
 
   headers: any = {
@@ -23,26 +26,26 @@ export class CartService {
   }
   addToCart(productId: string): Observable<any> {
     return this._httpclient.post(
-      'https://route-ecommerce.onrender.com/api/v1/cart',
+      'https://ecommerce.routemisr.com/api/v1/cart',
       { productId: productId },
       { headers: this.headers }
     );
   }
   getLoggeduserCart(): Observable<any> {
     return this._httpclient.get(
-      'https://route-ecommerce.onrender.com/api/v1/cart',
+      'https://ecommerce.routemisr.com/api/v1/cart',
       { headers: this.headers }
     );
   }
   removeCartItem(productId: string): Observable<any> {
     return this._httpclient.delete(
-      `https://route-ecommerce.onrender.com/api/v1/cart/${productId}`,
+      `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
       { headers: this.headers }
     );
   }
   updateItemCount(productId: string, count: number): Observable<any> {
     return this._httpclient.put(
-      `https://route-ecommerce.onrender.com/api/v1/cart/${productId}`,
+      `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
       {
         count: count,
       },

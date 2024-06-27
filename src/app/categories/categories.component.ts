@@ -10,7 +10,6 @@ import { RouterModule } from '@angular/router';
   imports: [CommonModule,CarouselModule,RouterModule],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.css',
-  providers: [ProductsService],
 })
 export class CategoriesComponent implements OnInit {
   categories:any[]=[]
@@ -35,7 +34,6 @@ export class CategoriesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this._productsService.getcategories().subscribe({
       next: (response) => this.categories = response.data,
       complete: () => console.log('complete from categories'),
