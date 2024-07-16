@@ -56,15 +56,18 @@ else{
   })
   handleRegister(registerform:FormGroup)
   {
-    this.isLoading = true
+    // this.isLoading = true
   if(registerform.valid) 
     // console.log(registerform.value)
     //register method
     this._authservice.register(registerform.value).subscribe({
       // routerlink to login
       
-      next: (data) =>{if(data.message==="success") 
+      next: (data) =>
+        {
+          if(data.message==="success") 
         this.isLoading = false
+          console.log(data)
         this._router.navigate(['/home']);},
       error: (err) =>{ this.isLoading = false;
         console.log(err)

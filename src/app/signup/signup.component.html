@@ -6,7 +6,7 @@
     <form (ngSubmit)=" handleRegister(registerform)" [formGroup]="registerform">
         <!-- <h2>{{registerform.get('password')?.getError('pattern')|json}}</h2> -->
         <label for="name">Name:</label>
-        <input formControlName="name" type="text" class="form-control mb-2"  id="Name">
+        <input placeholder="Enter Your Name" formControlName="name" type="text" class="form-control mb-2"  id="Name">
         <div *ngIf="registerform.get('name')?.errors && registerform.get('name')?.touched" class="alert alert-danger">
             <p *ngIf="registerform.get('name')?.getError('required')" class="m-0"> name is required</p>
             <p *ngIf="registerform.get('name')?.getError('minlength')" class="m-0">Minimum length is 2</p>

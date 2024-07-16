@@ -1,18 +1,15 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
-import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { ProductsService } from '../products.service';
 import { ToastrService } from 'ngx-toastr';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [HttpClientModule, CommonModule, RouterLink],
+  imports: [ CommonModule, RouterLink],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
-  providers: [CartService, ProductsService],
 })
 export class CartComponent implements OnInit {
   cartDetails: any = null;
